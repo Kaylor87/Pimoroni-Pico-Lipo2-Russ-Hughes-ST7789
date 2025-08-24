@@ -59,9 +59,10 @@ jobs:
     - name: "Add Russ Hughes ST7789 frozen module"
       shell: bash
       run: |
-        mkdir -p $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build
-        git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789_mpy
-
+        git clone https://github.com/russhughes/st7789_mpy.git "$CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build"
+        # quick sanity output for the CI log
+        echo "Cloned to: $(realpath "$CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build")"
+        ls -la "$CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build" || true
         
     - name: "Debug: show chip & st7789 paths"
       shell: bash
