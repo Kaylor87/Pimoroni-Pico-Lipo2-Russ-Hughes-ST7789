@@ -48,6 +48,7 @@ jobs:
       run: |
         mkdir -p $CI_PROJECT_ROOT/lib
         git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/lib/st7789_mpy
+        ls $CI_PROJECT_ROOT/lib/st7789_mpy
 
     - name: "Install Arm GNU Toolchain (arm-none-eabi-gcc)"
       uses: carlosperate/arm-none-eabi-gcc-action@v1
