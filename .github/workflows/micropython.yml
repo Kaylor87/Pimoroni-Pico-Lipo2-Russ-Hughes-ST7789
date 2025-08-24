@@ -46,8 +46,8 @@ jobs:
     - name: "Add Russ Hughes ST7789 frozen module"
       shell: bash
       run: |
-        mkdir -p $CI_PROJECT_ROOT/micropython/lib
-        git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/micropython/lib/st7789_mpy
+        git clone https://github.com/russhughes/st7789_mpy.git micropython/lib/st7789_mpy
+
 
     - name: "Install Arm GNU Toolchain (arm-none-eabi-gcc)"
       uses: carlosperate/arm-none-eabi-gcc-action@v1
