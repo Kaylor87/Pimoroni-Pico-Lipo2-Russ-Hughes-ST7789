@@ -21,4 +21,5 @@ set(PIMORONI_UF2_DIR ${CMAKE_CURRENT_LIST_DIR}/../../examples)
 include(${CMAKE_CURRENT_LIST_DIR}/../common.cmake)
 
 # Add Russ Hughes ST7789 user C module
-set(USER_C_MODULES ${CMAKE_SOURCE_DIR}/micropython/lib/st7789_mpy/micropython.cmake)
+message(STATUS "ST7789 clone path resolves to: ${CMAKE_SOURCE_DIR}/st7789_build/st7789_mpy/")
+set(USER_C_MODULES ${CMAKE_SOURCE_DIR}/st7789_build/st7789_mpy/micropython.cmake)
