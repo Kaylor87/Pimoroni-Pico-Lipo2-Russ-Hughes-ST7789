@@ -43,12 +43,6 @@ jobs:
         submodules: true
         path: ${{ env.CI_PROJECT_ROOT }}
 
-    - name: "Add Russ Hughes ST7789 frozen module"
-      shell: bash
-      run: |
-        git clone https://github.com/russhughes/st7789_mpy.git micropython/lib/st7789_mpy
-
-
     - name: "Install Arm GNU Toolchain (arm-none-eabi-gcc)"
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
@@ -61,6 +55,11 @@ jobs:
         mkdir -p $CI_BUILD_ROOT
         ci_apt_install_build_deps
         ci_prepare_all
+
+    - name: "Add Russ Hughes ST7789 frozen module"
+      shell: bash
+      run: |
+        git clone https://github.com/russhughes/st7789_mpy.git micropython/lib/st7789_mpy
 
     - name: "MicroPython: Configure"
       shell: bash
