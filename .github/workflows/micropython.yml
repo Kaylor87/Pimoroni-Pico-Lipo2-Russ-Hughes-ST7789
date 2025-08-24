@@ -63,15 +63,33 @@ jobs:
         git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789_mpy
 
         
-    - name: "Check Russ Hughes clone path"
+    - name: "Debug: show chip & st7789 paths"
       shell: bash
       run: |
-        echo "CI_PROJECT_ROOT is $CI_PROJECT_ROOT"
-        echo "Contents of st7789_build:"
-        ls -l $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789_mpy
-        echo "Absolute path of st7789_mpy:"
-        realpath $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789_mpy
-        
+        echo "CI_PROJECT_ROOT: $CI_PROJECT_ROOT"
+        echo "CI_BUILD_ROOT:   $CI_BUILD_ROOT"
+        echo "pwd: $(pwd)"
+        echo "--- ls $CI_PROJECT_ROOT ---"
+        ls -la $CI_PROJECT_ROOT || true
+        echo "--- ls micropython/ports/rp2 (repo CMake root) ---"
+        ls -la $CI_PROJECT_ROOT/micropython/ports/rp2 || true
+        echo "--- ls st7789_build (where we cloned) ---"
+        ls -la $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build || true
+        echo "--- tree st7789_build (small) ---"
+        (cd $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build && ls -la) || true
+        echo "--- show top-level micropython.cmake from st7789 ---"
+        if [ -f "$CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/micropython.cmake" ]; then
+          sed -n '1,200p' $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/micropython.cmake
+        else
+          echo "NO root micropython.cmake at expected location"
+        fi
+        echo "--- show nested st7789/micropython.cmake ---"
+        if [ -f "$CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789/micropython.cmake" ]; then
+          sed -n '1,200p' $CI_PROJECT_ROOT/micropython/ports/rp2/st7789_build/st7789/micropython.cmake
+        else
+          echo "NO nested st7789/micropython.cmake at expected location"
+        fi
+  
     - name: "MicroPython: Configure"
       shell: bash
       run: |
