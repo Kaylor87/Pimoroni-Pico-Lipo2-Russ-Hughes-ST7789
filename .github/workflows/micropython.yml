@@ -60,16 +60,16 @@ jobs:
       shell: bash
       run: |
         mkdir -p $CI_BUILD_ROOT/st7789_build
-        git clone https://github.com/russhughes/st7789_mpy.git $CI_BUILD_ROOT/st7789_build/
-
+        git clone https://github.com/russhughes/st7789_mpy.git $CI_BUILD_ROOT/micropython/ports/rp2/st7789_build/
+        
     - name: "Check Russ Hughes clone path"
       shell: bash
       run: |
         echo "CI_BUILD_ROOT is $CI_BUILD_ROOT"
         echo "Contents of st7789_build:"
-        ls -l $CI_BUILD_ROOT/st7789_build
+        ls -l $CI_BUILD_ROOT/micropython/ports/rp2/st7789_build
         echo "Absolute path of st7789_mpy:"
-        realpath $CI_BUILD_ROOT/st7789_build/st7789_mpy
+        realpath $CI_BUILD_ROOT/micropython/ports/rp2/st7789_build/st7789_mpy
         
     - name: "MicroPython: Configure"
       shell: bash
