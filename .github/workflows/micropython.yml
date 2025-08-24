@@ -48,6 +48,12 @@ jobs:
       run: |
         mkdir -p $CI_PROJECT_ROOT/lib
         git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/lib/st7789_mpy
+    
+    - name: "Set frozen module environment"
+      shell: bash
+      run: |
+        export MICROPY_FROZEN_DIRS="$CI_PROJECT_ROOT/lib/st7789_mpy"
+        echo "MICROPY_FROZEN_DIRS=$MICROPY_FROZEN_DIRS" >> $GITHUB_ENV
 
     - name: "Install Arm GNU Toolchain (arm-none-eabi-gcc)"
       uses: carlosperate/arm-none-eabi-gcc-action@v1
