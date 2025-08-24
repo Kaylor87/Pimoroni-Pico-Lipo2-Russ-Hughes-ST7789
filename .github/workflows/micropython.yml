@@ -14,10 +14,7 @@ jobs:
     strategy:
       matrix:
         include:
-        - name: pimoroni_pico_lipo_4mb
-        - name: pimoroni_pico_lipo_16mb
         - name: pimoroni_pico_lipo2
-        - name: pimoroni_pico_lipo2xl_w
 
     env:
       # MicroPython version will be contained in github.event.release.tag_name for releases
@@ -45,6 +42,12 @@ jobs:
       with:
         submodules: true
         path: ${{ env.CI_PROJECT_ROOT }}
+
+    - name: "Add Russ Hughes ST7789 frozen module"
+      shell: bash
+      run: |
+        mkdir -p $CI_PROJECT_ROOT/lib
+        git clone https://github.com/russhughes/st7789_mpy.git $CI_PROJECT_ROOT/lib/st7789_mpy
 
     - name: "Install Arm GNU Toolchain (arm-none-eabi-gcc)"
       uses: carlosperate/arm-none-eabi-gcc-action@v1
