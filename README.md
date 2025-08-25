@@ -1,5 +1,10 @@
-#Kaylor - Testing to figure this out
-#Test 2 happening, workflows were disabled on my fork
+I forked this repo from the official Pimoroni Pico Lipo 2 firmware repo, and added to it so that when it generates a new firmware file, it also includes the Russ Hughes st7789_mpy driver (https://github.com/russhughes/st7789_mpy).
+
+Located in the 'Firmware' folder, you will find the .uf2 which you can flash onto a standard "Pimoroni Pico Lipo 2" board. It will allow you to use all 520KB of ram plus the additional 8MB which are pulled in from the physical PSRAM chip this board has.
+
+In addition, it will allow you to use the st7789 library commands that Russ Hughes has put together, for use with various SPI screens such as the Waveshare Pico-LCD-1.14" and the Pico-LCD-1.3" (see Russ Hughes' st7789_mpy repo for more info). I have also frozen all of the fonts from the same repo into this firmware file as well. 
+
+__________________________________________________________________
 # Pico LiPo <!-- omit in toc -->
 
 ## Pimoroni Pico MicroPython for Pico LiPo Boards <!-- omit in toc -->
