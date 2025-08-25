@@ -7,4 +7,7 @@ include(modules/c/wakeup/micropython)
 # Powman example for low power sleep
 include(modules/c/powman/micropython)
 
+# Russ Hughes st7789 module
+include(modules/c/st7789_module/micropython)
+
 include(usermod-common)
